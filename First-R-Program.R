@@ -9,7 +9,7 @@ BiocManager::install("affy")
 
 
 
-c#Load the package affy
+#Load the package affy
 library(affy)
 
 #Read CEL microarray files in R using library affy
@@ -39,6 +39,11 @@ celFiles = list.celfiles("/Users/nyaweems/Desktop")
 affyRaw <-read.celfiles(celFiles)
 eset <- rma(affyRaw)
 boxplot(eset)
+
+rma_normalized <- exprs(eset)
+Fold_change <- rma_normalized[,1] - rma_normalized[,2]
+
+# Significant Threshold (up-regulated) >1.5 and (Down-regulated) <-1.5
 
 
 
